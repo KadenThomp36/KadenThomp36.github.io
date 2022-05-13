@@ -1993,6 +1993,22 @@ th:last-child, td:last-child {
     -webkit-overflow-scrolling: touch;
 }
 
+.table-dark {
+color: white;
+}
+
+.table-head {
+    color: gray;
+}
+
+.table-title {
+    color: yellow;
+}
+
+.table-side {
+    color: yellow;
+}
+
 /* ------------------------------------------------------------------- 
  * ## spacing
  * ------------------------------------------------------------------- */
