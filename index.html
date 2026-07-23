@@ -4,184 +4,273 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kaden Thompson</title>
-  <meta name="description" content="Kaden Thompson — software engineer in Waterford, Michigan. Open-source Home Assistant cards, self-hosted tools, and websites.">
+  <meta name="description" content="Software engineer in Waterford, Michigan.">
   <meta property="og:title" content="Kaden Thompson">
-  <meta property="og:description" content="Software engineer in Waterford, Michigan. Open-source Home Assistant cards, self-hosted tools, and websites.">
+  <meta property="og:description" content="Software engineer in Waterford, Michigan.">
   <meta property="og:url" content="https://kadenthomp36.github.io/">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%23c8401f'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%23111'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #faf9f7;
-      --ink: #1c1a17;
-      --muted: #79736b;
-      --faint: #e7e3dd;
-      --accent: #c8401f;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #131211;
-        --ink: #e8e4de;
-        --muted: #8f887d;
-        --faint: #2a2725;
-        --accent: #e86a44;
-      }
+      --body-color: #111;
+      --body-bg: #fdfdfc;
+      --soft: rgba(0, 0, 0, .4);
+      --hairline: #f2f2f2;
+      --rule: #ededed;
+      --underline: #d9d9d9;
+      --underline-hover: #666;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 16px; }
+    html { background: var(--body-bg); color: var(--body-color); scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Newsreader", Georgia, serif;
-      font-size: 1.0625rem;
-      line-height: 1.65;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
-      padding: clamp(3rem, 12vh, 7rem) 1.5rem 6rem;
+      -moz-osx-font-smoothing: grayscale;
     }
-    main { max-width: 34rem; margin: 0 auto; }
-    a {
-      color: var(--ink);
-      text-decoration: underline;
-      text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      transition: color 120ms ease, text-decoration-color 120ms ease;
-    }
-    a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-    h1 {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-    }
-    .role {
-      color: var(--muted);
-      margin-bottom: 2.75rem;
-    }
-    .bio p + p { margin-top: 1rem; }
-    section { margin-top: 3.25rem; }
-    h2 {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
+    ::selection { color: #111; background: #ededed; }
+    h1, h2, h3 { font-size: 100%; font-weight: 400; }
     ul { list-style: none; }
-    li + li { margin-top: 1.35rem; }
-    .item-line {
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      padding: 5rem 1rem 2.5rem;
+      max-width: 36.375rem;
+      margin: 0 auto;
+    }
+    .container::before {
+      content: "";
+      pointer-events: none;
+      z-index: 9;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 8rem;
+      background: linear-gradient(180deg, #fdfdfc 0, hsla(60, 20%, 99%, .738) 19%, hsla(60, 20%, 99%, .541) 34%, hsla(60, 20%, 99%, .382) 47%, hsla(60, 20%, 99%, .278) 56.5%, hsla(60, 20%, 99%, .194) 65%, hsla(60, 20%, 99%, .126) 73%, hsla(60, 20%, 99%, .075) 80.2%, hsla(60, 20%, 99%, .042) 86.1%, hsla(60, 20%, 99%, .021) 91%, hsla(60, 20%, 99%, .008) 95.2%, hsla(60, 20%, 99%, .002) 98.2%, hsla(60, 20%, 99%, 0));
+    }
+    @media screen and (max-width: 768px) {
+      .container { padding: 2rem 1.5rem 2.5rem; }
+      .container::before { height: 2.5rem; }
+    }
+
+    .article > header {
       display: flex;
-      align-items: baseline;
+      flex-direction: column;
+      gap: .25rem;
+      padding: 0 0 .5rem;
+    }
+    .article > header h1 {
+      color: #111;
+      font-weight: 500;
+      font-size: .875rem;
+      line-height: 1.25rem;
+      letter-spacing: -.00563rem;
+    }
+    .article > header time {
+      color: var(--soft);
+      font-weight: 460;
+      font-size: .875rem;
+      line-height: 1.25rem;
+      letter-spacing: -.00563rem;
+    }
+    .article > p {
+      font-size: .875rem;
+      font-weight: 460;
+      line-height: 1.25rem;
+      letter-spacing: -.00563rem;
+      padding-top: 1rem;
+    }
+
+    .basic-link {
+      position: relative;
+      display: inline;
+      color: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      transition: all .2s ease;
+    }
+    .basic-link::before {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      border-radius: 2px;
+      background: var(--underline);
+      opacity: 1;
+      transition: inherit;
+    }
+    .basic-link:hover::before { background: var(--underline-hover); }
+
+    .post-list { padding: 3rem 0 0; }
+    .post-list h3 {
+      color: var(--soft);
+      font-size: .875rem;
+      font-weight: 460;
+      letter-spacing: -.00563rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .post-list > ul { display: flex; flex-direction: column; }
+    .post-list > ul > li { border-bottom: 1px solid var(--hairline); }
+    .post-list > ul > li:last-child { border-bottom: none; }
+    .post-list > ul > li > ul { display: flex; flex-direction: column; }
+    .post-list > ul > li > ul > li:last-child > a::after { display: none; }
+    .post-list > ul > li > ul > li:first-child > a > time > span:last-child { visibility: visible; }
+    .post-list > ul > li > ul > li > a {
+      position: relative;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      padding: .735rem 0 .735rem 6.75rem;
     }
-    .year {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.6875rem;
-      color: var(--muted);
-      white-space: nowrap;
+    .post-list > ul > li > ul > li > a::after {
+      content: "";
+      border-bottom: 1px solid var(--hairline);
+      position: absolute;
+      bottom: 0; left: 6.75rem; right: 0;
     }
-    .desc { color: var(--muted); font-size: 1rem; }
-    .elsewhere li + li { margin-top: 0.35rem; }
-    .elsewhere .item-line { justify-content: flex-start; gap: 0.75rem; }
-    .elsewhere .year { min-width: 5.5rem; }
-    footer {
-      margin-top: 4.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--faint);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.6875rem;
-      color: var(--muted);
+    .post-list > ul > li > ul > li > a h2 {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      color: #111;
+      font-size: .875rem;
+      font-weight: 460;
+      letter-spacing: -.00563rem;
+      transition: opacity .14s ease;
     }
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal { animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-      .reveal:nth-child(1) { animation-delay: 0ms; }
-      .reveal:nth-child(2) { animation-delay: 60ms; }
-      .reveal:nth-child(3) { animation-delay: 120ms; }
-      .reveal:nth-child(4) { animation-delay: 180ms; }
-      .reveal:nth-child(5) { animation-delay: 240ms; }
-      .reveal:nth-child(6) { animation-delay: 300ms; }
-      .reveal:nth-child(7) { animation-delay: 360ms; }
-      @keyframes rise {
-        from { opacity: 0; transform: translateY(8px); }
-        to { opacity: 1; transform: none; }
-      }
+    .post-list > ul > li > ul > li > a time {
+      color: var(--soft);
+      font-size: .875rem;
+      font-weight: 460;
+      line-height: normal;
+      letter-spacing: -.00563rem;
+    }
+    .post-list > ul > li > ul > li > a time span {
+      transition: opacity .14s ease;
+      display: inline-block;
+    }
+    .post-list > ul > li > ul > li > a time span:nth-child(2) {
+      position: absolute;
+      width: 0; height: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .post-list > ul > li > ul > li > a time span:last-child {
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+    }
+    @media screen and (max-width: 520px) {
+      .post-list > ul > li > ul > li > a { padding-left: 3rem; }
+      .post-list > ul > li > ul > li > a::after { left: 3rem; }
+    }
+    @media screen and (min-width: 520px) {
+      .post-list > ul:hover > li > ul > li > a h2,
+      .post-list > ul:hover > li > ul > li > a time span { opacity: .3; }
+      .post-list > ul:hover > li > ul > li > a time span:last-child { opacity: 1; }
+      .post-list > ul > li > ul > li > a:hover h2,
+      .post-list > ul > li > ul > li > a:hover time span { opacity: 1; }
+    }
+
+    footer { padding: 2.5rem 0 5rem; }
+    .footer-inner::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 3.125rem;
+      background: var(--rule);
+      margin: 0 0 2.375rem;
+    }
+    .footer-inner p {
+      color: var(--soft);
+      font-size: .8125rem;
+      font-weight: 460;
+      letter-spacing: -.0025rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes staggerIn {
+      0% { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .homepage > .article > * { animation: staggerIn .5s ease both; }
+    .homepage > .article > :first-child { animation-delay: 0s; }
+    .homepage > .article > :nth-child(2) { animation-delay: .05s; }
+    .homepage > .article > :nth-child(3) { animation-delay: .1s; }
+    .homepage > .article > :nth-child(4) { animation-delay: .15s; }
+    .homepage > .article > :nth-child(5) { animation-delay: .2s; }
+    .homepage > .article > :nth-child(6) { animation-delay: .25s; }
+    .homepage > .article > :nth-child(n+7) { animation-delay: .3s; }
+    .homepage > section, .homepage > footer { animation: staggerIn .5s ease both; animation-delay: .35s; }
+    @media (prefers-reduced-motion: reduce) {
+      .homepage > .article > *, .homepage > section, .homepage > footer { animation: none; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="reveal">
-      <h1>Kaden Thompson</h1>
-      <p class="role">Software engineer in Waterford, Michigan</p>
+  <div class="container">
+    <div class="homepage">
+      <article class="article">
+        <header>
+          <h1>Kaden Thompson</h1>
+          <time>Updated Jul 23, 2026</time>
+        </header>
+        <p>I live in Waterford, Michigan, and work as a software engineer at <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://www.rocketmortgage.com">Rocket Mortgage</a>.</p>
+        <p>I build open-source cards for <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://www.home-assistant.io">Home Assistant</a>, including <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KadenThomp36/chronicle-card">Chronicle Card</a>, a universal timeline card in the HACS default store, <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KadenThomp36/air-quality-card">Air Quality Card</a>, for indoor air-quality monitoring with WHO-based health thresholds, and <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KadenThomp36/garage-card">Garage Card</a>, a top-down visual garage.</p>
+        <p>I also run <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://kdenteellc.com">kdentee LLC</a>, a small studio for freelance web work, where I designed and still maintain the website for <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://www.lincoln-twp.org">Lincoln Township</a>, Michigan.</p>
+        <p>Most of the software I use at home is my own. My homelab runs Crate, an inventory system for the physical world, and Marquee, a household tracker for TV, movies, and anime.</p>
+        <p>I enjoy building small, polished tools that solve real problems.</p>
+        <p>You can find me on <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://github.com/KadenThomp36">GitHub</a>, <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/kadenthompson/">LinkedIn</a>, read my <a class="basic-link" target="_blank" rel="noopener noreferrer" href="https://kdentee.com">blog</a>, or reach me via <a class="basic-link" href="mailto:kadenthomp36@gmail.com">email</a>.</p>
+      </article>
+
+      <section class="post-list">
+        <h3>Projects</h3>
+        <ul>
+          <li>
+            <ul>
+              <li><a href="https://github.com/KadenThomp36/chronicle-card" target="_blank" rel="noopener noreferrer"><h2>Chronicle Card</h2><time datetime="2026-03-12"><span>12/03</span><span>/</span><span>2026</span></time></a></li>
+              <li><a href="https://github.com/KadenThomp36/garage-card" target="_blank" rel="noopener noreferrer"><h2>Garage Card</h2><time datetime="2026-02-27"><span>27/02</span><span>/</span><span>2026</span></time></a></li>
+              <li><a href="https://github.com/KadenThomp36/air-quality-card" target="_blank" rel="noopener noreferrer"><h2>Air Quality Card</h2><time datetime="2026-02-11"><span>11/02</span><span>/</span><span>2026</span></time></a></li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li><a href="https://kdenteellc.com" target="_blank" rel="noopener noreferrer"><h2>kdentee LLC</h2><time datetime="2024-08-22"><span>22/08</span><span>/</span><span>2024</span></time></a></li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li><a href="https://www.lincoln-twp.org" target="_blank" rel="noopener noreferrer"><h2>Lincoln Township</h2><time datetime="2021-06-29"><span>29/06</span><span>/</span><span>2021</span></time></a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <div class="footer-inner">
+          <p id="clock"></p>
+        </div>
+      </footer>
     </div>
-
-    <div class="bio reveal">
-      <p>I build open-source cards for <a href="https://www.home-assistant.io/">Home Assistant</a>, self-hosted tools for my homelab, and websites for the people and places around me. By day I&rsquo;m a software engineer at <a href="https://www.rocketmortgage.com/">Rocket Mortgage</a>.</p>
-      <p>I started programming with LEGO robotics as a kid and never really stopped. These days most of my free time goes to home automation, CAD and 3D printing, and being outside on water or snow.</p>
-    </div>
-
-    <section class="reveal">
-      <h2>Open source</h2>
-      <ul>
-        <li>
-          <div class="item-line"><a href="https://github.com/KadenThomp36/chronicle-card">Chronicle Card</a><span class="year">2026</span></div>
-          <p class="desc">A universal timeline card for Home Assistant — events from any source in one interactive timeline. In the HACS default store.</p>
-        </li>
-        <li>
-          <div class="item-line"><a href="https://github.com/KadenThomp36/air-quality-card">Air Quality Card</a><span class="year">2026</span></div>
-          <p class="desc">Indoor air-quality monitoring with gradient graphs, WHO-based health thresholds, and CO / radon safety alerts.</p>
-        </li>
-        <li>
-          <div class="item-line"><a href="https://github.com/KadenThomp36/garage-card">Garage Card</a><span class="year">2026</span></div>
-          <p class="desc">A top-down visual garage: door state, car presence, and light control in one card.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="reveal">
-      <h2>Self-hosted</h2>
-      <ul>
-        <li>
-          <div class="item-line">Crate<span class="year">2026</span></div>
-          <p class="desc">A monospace-minimal inventory system for the physical world — web app, CLI, and an MCP server so an AI agent can file inventory by voice.</p>
-        </li>
-        <li>
-          <div class="item-line">Marquee<span class="year">2026</span></div>
-          <p class="desc">A household media tracker for TV, movies, and anime — a self-hosted TV&nbsp;Time replacement built with FastAPI and vanilla JS.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="reveal">
-      <h2>Web</h2>
-      <ul>
-        <li>
-          <div class="item-line"><a href="https://www.lincoln-twp.org">Lincoln Township</a><span class="year">2021&ndash;</span></div>
-          <p class="desc">Designed, built, and still maintain the municipal website for Lincoln Township, Michigan.</p>
-        </li>
-        <li>
-          <div class="item-line"><a href="https://kdenteellc.com">kdentee LLC</a><span class="year">2025&ndash;</span></div>
-          <p class="desc">My studio for freelance web work.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="elsewhere reveal">
-      <h2>Elsewhere</h2>
-      <ul>
-        <li><div class="item-line"><span class="year">github</span><a href="https://github.com/KadenThomp36">@KadenThomp36</a></div></li>
-        <li><div class="item-line"><span class="year">linkedin</span><a href="https://www.linkedin.com/in/kadenthompson/">kadenthompson</a></div></li>
-        <li><div class="item-line"><span class="year">blog</span><a href="https://kdentee.com">kdentee.com</a></div></li>
-        <li><div class="item-line"><span class="year">email</span><a href="mailto:kadenthomp36@gmail.com">kadenthomp36@gmail.com</a></div></li>
-      </ul>
-    </section>
-
-    <footer class="reveal">Waterford, MI &middot; updated July 2026</footer>
-  </main>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('clock');
+      function tick() {
+        var t = new Intl.DateTimeFormat('en-US', {
+          hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/Detroit'
+        }).format(new Date()).toLowerCase().replace(/\s/g, '');
+        el.textContent = t + ' in Waterford, Michigan';
+      }
+      tick();
+      setInterval(tick, 10000);
+    })();
+  </script>
 </body>
 </html>
