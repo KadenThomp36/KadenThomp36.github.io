@@ -1,540 +1,187 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Kaden Thompson</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/vendor.css">
-
-    <!-- script
-    ================================================== -->
-    <script defer src="js/vendor/fontawesome/all.min.js"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="shortcut icon" href="/images/Coffee-icon.ico">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaden Thompson</title>
+  <meta name="description" content="Kaden Thompson — software engineer in Waterford, Michigan. Open-source Home Assistant cards, self-hosted tools, and websites.">
+  <meta property="og:title" content="Kaden Thompson">
+  <meta property="og:description" content="Software engineer in Waterford, Michigan. Open-source Home Assistant cards, self-hosted tools, and websites.">
+  <meta property="og:url" content="https://kadenthomp36.github.io/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%23c8401f'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --ink: #1c1a17;
+      --muted: #79736b;
+      --faint: #e7e3dd;
+      --accent: #c8401f;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131211;
+        --ink: #e8e4de;
+        --muted: #8f887d;
+        --faint: #2a2725;
+        --accent: #e86a44;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: clamp(3rem, 12vh, 7rem) 1.5rem 6rem;
+    }
+    main { max-width: 34rem; margin: 0 auto; }
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 120ms ease, text-decoration-color 120ms ease;
+    }
+    a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+    h1 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .role {
+      color: var(--muted);
+      margin-bottom: 2.75rem;
+    }
+    .bio p + p { margin-top: 1rem; }
+    section { margin-top: 3.25rem; }
+    h2 {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    ul { list-style: none; }
+    li + li { margin-top: 1.35rem; }
+    .item-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .year {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6875rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .desc { color: var(--muted); font-size: 1rem; }
+    .elsewhere li + li { margin-top: 0.35rem; }
+    .elsewhere .item-line { justify-content: flex-start; gap: 0.75rem; }
+    .elsewhere .year { min-width: 5.5rem; }
+    footer {
+      margin-top: 4.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--faint);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .reveal:nth-child(1) { animation-delay: 0ms; }
+      .reveal:nth-child(2) { animation-delay: 60ms; }
+      .reveal:nth-child(3) { animation-delay: 120ms; }
+      .reveal:nth-child(4) { animation-delay: 180ms; }
+      .reveal:nth-child(5) { animation-delay: 240ms; }
+      .reveal:nth-child(6) { animation-delay: 300ms; }
+      .reveal:nth-child(7) { animation-delay: 360ms; }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: none; }
+      }
+    }
+  </style>
 </head>
-
-<body id="top" class="ss-preload">
-
-
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader"></div>
+<body>
+  <main>
+    <div class="reveal">
+      <h1>Kaden Thompson</h1>
+      <p class="role">Software engineer in Waterford, Michigan</p>
     </div>
 
-
-    <!-- header
-    ================================================== -->
-    <header class="s-header">
-        <div class="row s-header__nav-wrap">
-            <nav class="s-header__nav">
-                <ul>
-                    <li class="current"><a class="smoothscroll" href="#hero">Home</a></li>
-                    <li><a class="smoothscroll" href="#about">About</a></li>
-                    <li><a class="smoothscroll" href="#resume">Resume</a></li>
-                    <li><a class="smoothscroll" href="#portfolio">Works</a></li>
-                    <li><a class="smoothscroll" href="#contact">Say Hello</a></li>
-                    <li><a class="smoothscroll" href="#frytierlist">🍟</a></li>
-                </ul>
-            </nav>
-        </div> <!-- end row -->
-        
-        <a class="s-header__menu-toggle" href="#0" title="Menu">
-            <span class="s-header__menu-icon"></span>
-        </a>
-    </header> <!-- end s-header -->
-
-
-    <!-- hero
-    ================================================== -->
-    <section id="hero" class="s-hero target-section">
-
-        <div class="s-hero__bg rellax" data-rellax-speed="-7"></div>
-
-        <div class="row s-hero__content">
-            <div class="column">
-
-                <div class="s-hero__content-about">
-
-                    <h1>I'm Kaden Thompson.</h1>
-
-                    <h3>
-                    I'm a&nbsp; <span>Software Engineer</span>, <span>IT Hobbiest</span> and former <span>ACM Club President</span> who enjoys tackling tough problems and finding unique solutions. <a class="smoothscroll" href="#about">start scrolling</a>
-                    and learn more <a class="smoothscroll" href="#about">about me</a>.
-                    </h3>
-
-                    <div class="s-hero__content-social">
-                        <a href="https://www.facebook.com/kaden.thompson.58"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
-                        <a href="https://www.instagram.com/kadenmt36/?hl=en"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/kadenthompson/"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
-
-                </div> <!-- end s-hero__content-about -->
-
-            </div>
-        </div> <!-- s-hero__content -->
-
-        <div class="s-hero__scroll">
-            <a href="#about" class="s-hero__scroll-link smoothscroll">
-                <span class="scroll-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M18.707 12.707L17.293 11.293 13 15.586 13 6 11 6 11 15.586 6.707 11.293 5.293 12.707 12 19.414z"></path></svg>
-                </span>
-                <span class="scroll-text">Scroll Down</span>
-            </a>
-        </div> <!-- s-hero__scroll -->
-
-    </section> <!-- end s-hero -->
-
-
-    <!-- about
-    ================================================== -->
-    <section id="about" class="s-about target-section">
-
-        <div class="row">
-            <div class="column large-3 tab-12">
-                <img class="s-about__pic" src="images/avatars/user-06.jpg" alt="">
-            </div>
-            <div class="column large-9 tab-12 s-about__content">
-                <h3>About Me</h3>
-                <p>
-                	I am a college graduate with a bachelor's in Computer Science currently employed at Rocket Central. I started coding when I was young using LEGO robotics and discovered a passion for it. I knew once I entered highschool programming that a degree in Computer Science was for me. After college I continue to enjoy taking on side projects such as renovating my local governments <a href="https://www.lincoln-twp.org">website</a>. In my free time, I enjoy snow skiing, waterskiing, playing video games, spending time with my girlfriend, and hanging out with my pup!
-                </p>
-
-                <hr>
-
-                <div class="row s-about__content-bottom">
-                    <div class="column w-1000-stack">
-                        <h3>Contact Details</h3>
-    
-                        <p>
-                        Kaden Thompson <br>
-                        1310 East Beamish Road <br>
-                        Midland, MI 48642 US <br>
-                        <a href="tel:+19899415846">+1 (989) 941 5846</a> <br>
-                        <a href="mailto:kadenthomp36@gmail.com">kadenthomp36@gmail.com</a>
-                        </p>
-                        
-                    </div>
-                    <div class="column w-1000-stack">
-                        <a href="images/Kaden Thompson_Resume.pdf" class="btn btn--download">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M12 16L16 11 13 11 13 4 11 4 11 11 8 11z"></path><path d="M20,18H4v-7H2v7c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2v-7h-2V18z"></path></svg>
-                      Download Resume </a>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end row -->
-
-    </section> <!-- end s-about -->
-
-
-    <!-- resume
-    ================================================== -->
-    <section id="resume" class="s-resume target-section">
-        
-        <div class="row s-resume__section">
-            <div class="column large-3 tab-12">
-                <h3 class="section-header-allcaps">Employment &amp; Releveant Experience</h3>
-            </div>
-
-            <div class="column large-9 tab-12">
-                <div class="resume-block">
-  
-                    <div class="resume-block__header">
-                        <h4 class="h3">Rocket Mortgage</h4>
-                        <p class="resume-block__header-meta">
-                            <span>Software Engineer I</span> 
-                            <span class="resume-block__header-date">
-                                August 2022 - Present
-                            </span>
-                        </p>
-                    </div>
-                    <p>
-                      Full stack developer working on lead ingestion via angular forms. Programming in Angular, Nestjs following Agile principals.
-                    </p>
-    
-                </div> 
-
-                <div class="resume-block">
-  
-                  <div class="resume-block__header">
-                      <h4 class="h3">Rocket Mortgage</h4>
-                      <p class="resume-block__header-meta">
-                          <span>Associate Software Engineer</span> 
-                          <span class="resume-block__header-date">
-                              January 2022 - August 2022
-                          </span>
-                      </p>
-                  </div>
-  
-                  <p>
-                    Working on IT Team Aperture managing backend work for the majority of the landing pages used by Rocket Companies. Programming in Angular using Agile methodologies.
-                  </p>
-  
-              </div> 
-
-              <div class="resume-block">
-
-                <div class="resume-block__header">
-                    <h4 class="h3">Rocket Mortgage</h4>
-                    <p class="resume-block__header-meta">
-                        <span>Software Engineer Intern</span> 
-                        <span class="resume-block__header-date">
-                            May 2021 - August 2021
-                        </span>
-                    </p>
-                </div>
-
-                <p>
-                  Worked on backend/frontend programming for websites. Programmed in C#, Typescript, CSS, html, Angular. Practiced Agile methodologies and ceremonies. Participated in multiple large scale code deployments (company rebrand, FOIA web flow)
-                </p>
-
-                <div class="resume-block">
-
-                    <div class="resume-block__header">
-                        <h4 class="h3">Garber Management Group</h4>
-                        <p class="resume-block__header-meta">
-                            <span>IT Technician</span> 
-                            <span class="resume-block__header-date">
-                                March 2019 - April 2021
-                            </span>
-                        </p>
-                    </div>
-
-                    <p>
-                    	Assisted in company wide systems update. Handled technical
-						support tickets on and off site. Responsible for imaging and setting up new systems.
-						Work with system administrators on issues with partiioning new software to run on new and different hardware.
-                    </p>
-
-                </div>
-
-                <div class="resume-block">
-
-                    <div class="resume-block__header">
-                        <h4 class="h3">Senior Capstone Project</h4>
-                        <p class="resume-block__header-meta">
-                            <span>UI &amp; Backend Development</span> 
-                            <span class="resume-block__header-date">
-                                August 2020 - April 2021
-                            </span>
-                        </p>
-                    </div>
-
-                    <p>
-                    	Desinged and compiled a System Requirement Software Specification as a team leader. Worked in the Development Team creating User Interface Functionality and other user utilites. Used Git extensively for version control and documentation.
-                    </p>
-
-                </div>
-
-                <div class="resume-block">
-
-                    <div class="resume-block__header">
-                        <h4 class="h3">Lincoln Township Website</h4>
-                        <p class="resume-block__header-meta">
-                            <span>Full Stack Web Development</span> 
-                            <span class="resume-block__header-date">
-                                May 2021 - On-Going
-                            </span>
-                        </p>
-                    </div>
-
-                    <p>
-                    	Designed, built, shipped, and maintained a brand new website for Lincoln Township, Midland, Michigan. Created a deployment pipeline for easy updating and templated code for future maintainablity. <a href="https://www.lincoln-twp.org">Take a look</a>!
-                    </p>
-
-                </div>
-                 <!-- end resume-block -->
-            </div>
-        </div> <!-- s-resume__section -->
-
-
-        <div class="row s-resume__section">
-            <div class="column large-3 tab-12">
-                <h3 class="section-header-allcaps">Education</h3>
-            </div>
-            <div class="column large-9 tab-12">
-                <div class="resume-block">
-
-                    <div class="resume-block__header">
-                        <h4 class="h3">Saginaw Valley State University</h4>
-                        <p class="resume-block__header-meta">
-                            <span>Bachelor of Computer Science</span> 
-                            <span class="resume-block__header-date">
-                                December 2021
-                            </span>
-                        </p>
-                    </div>
-
-                    <p>
-                    	Attained the Deans' List honor Eight different semesters and Presidents List for one semester. Graduated with a GPA of 3.75 (Magna Cum Laude). President of Association of Computing Machinery (ACM) where I organized meetings and supervised other club members.
-                    </p>
-
-                </div> <!-- end resume-block -->
-
-                <div class="resume-block">
-
-                    <div class="resume-block__header">
-                        <h4 class="h3"></h4>
-                        <p class="resume-block__header-meta">
-                            
-                        </p>
-                    </div>
-
-
-
-                </div> <!-- end resume-block -->
-            </div>
-        </div> <!-- s-resume__section -->
-
-
-        <div class="row s-resume__section">
-            <div class="column large-3 tab-12">
-                <h3 class="section-header-allcaps">Skills</h3>
-            </div>
-            <div class="column large-9 tab-12">
-                <div class="resume-block">
-                    <p>
-                    	Attained AWS Cloud Practicioner Certification.
-                    </p>
-                    <ul class="skill-bars-fat">
-						<li>
-                        <div class="progress percent90"></div>
-                        <strong>Typescript</strong>
-                        </li>
-						<li>
-                        <div class="progress percent90"></div>
-                        <strong>Angular</strong>
-                        </li>
-						<li>
-                        <div class="progress percent85"></div>
-                        <strong>RXJS</strong>
-                        </li>
-						<li>
-                        <div class="progress percent85"></div>
-                        <strong>Nestjs</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent70"></div>
-                        <strong>SCSS</strong>
-						</li>
-                        
-                        
-                    </ul>
-
-                </div> <!-- end resume-block -->
-
-            </div>
-        </div> <!-- s-resume__section -->
-
-    </section> <!-- end s-resume -->
-
-
-    <!-- portfolio
-    ================================================== -->
-    <section id="portfolio" class="s-portfolio target-section">
-
-        <div class="row s-portfolio__header">
-            <div class="column large-12">
-                <h3>Some Projects...</h3>
-            </div>
-        </div>
-
-        <div class="row collapse block-large-1-3 block-medium-1-3 block-tab-1-2 block-500-stack folio-list">
-
-            <div class="column folio-item">
-                <a href="#modal-01" class="folio-item__thumb">
-                    <img src="images/java.jpg" 
-                         alt="">
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item">
-                <a href="#modal-02" class="folio-item__thumb">
-                    <img src="images/java sql.jpg" alt="">
-                </a>
-            </div> <!-- end folio-item -->
-
-            <div class="column folio-item">
-                <a href="#modal-03" class="folio-item__thumb">
-                    <img src="images/vb.jpg" alt="">
-                </a>
-            </div> <!-- end folio-item -->
-
-            
-
-            
-
-        </div> <!-- end folio-list -->
-
-
-        <!-- Modal Templates Popup
-        =========================================================== -->
-        <div id="modal-01" hidden>
-            <div class="modal-popup">
-                <img src="images/java.jpg" alt="" />
-    
-                <div class="modal-popup__desc">
-                    <h5>Java Scheduling Program</h5>
-                    <p>Program that would schedule workers to attend to different orders based on the day and who was next available. Calculated reports for pay, delivery totals and other statistics.</p>
-                    <ul class="modal-popup__cat">
-                        <li>Java</li>
-                        <li>Scheduling</li>
-						<li>SQL</li>
-                    </ul>
-                </div>
-    
-                <a href="/images/Scheduler.pdf" class="modal-popup__details">Project link</a>
-            </div>
-        </div> <!-- end modal -->
-
-        <div id="modal-02" hidden>
-            <div class="modal-popup">
-                <img src="images/java sql.jpg" alt="" />
-    
-                <div class="modal-popup__desc">
-                    <h5>Java Database Program</h5>
-                    <p>Library database program that can checkout books, add books, return books, calculate fees, and run reports.</p>
-                    <ul class="modal-popup__cat">
-                        <li>Java</li>
-						<li>SQL</li>
-                    </ul>
-                </div>
-    
-                <a href="https://github.com/KadenThomp36/LibraryDatabase" class="modal-popup__details">Project link</a>
-            </div>
-        </div> <!-- end modal -->
-
-        <div id="modal-03" hidden>
-            <div class="modal-popup">
-                <img src="images/vb.jpg" alt="" />
-    
-                <div class="modal-popup__desc">
-                    <h5>Networked Muliplayer Mancala</h5>
-                    <p>Fully functioning Mancala game that can be played with more than one person on a network.</p>
-                    <ul class="modal-popup__cat">
-                        <li>Visual Basic</li>
-						<li>Networking</li>
-                    </ul>
-                </div>
-    
-                <a href="/images/Networked Mancala.pdf" class="modal-popup__details">Project link</a>
-            </div>
-        </div> <!-- end modal -->
-
-       
-
-    </section> <!-- end s-portfolio -->
-
-
-    <!-- CTA
-    ================================================== -->
-    <section class="s-cta">
-
-        
-        </div> <!-- end cta-content -->
-
-    </section> <!-- end s-cta -->
-
-
-    <!-- testimonials
-    ================================================== -->
-    
-
-    <!-- contact
-    ================================================== -->
-    <section id="contact" class="s-contact target-section">
-
-        <div class="row s-contact__header">
-            <div class="column large-12">
-                <h3 class="section-header-allcaps">Say Hello</h3>
-            </div>
-        </div>
-
-        <div class="row s-contact__content">
-
-            <div class="column large-7 medium-12">
-
-                <h4 class="huge-text">
-                I am open to opportunities and eagerly await new challenges. Feel free to contact me!
-                </h4>
-
-            </div>
-
-            <div class="column large-4 medium-12">
-
-                <div class="row contact-infos">
-                    <div class="column large-12 medium-6 tab-12">
-                        <div class="contact-block">
-                            <h5 class="contact-block__header">
-                                Email
-                            </h5>
-                            <p class="contact-block__content">
-                                <a class="mailtoui" href="mailto:kadenthomp36@gmail.com">kadenthomp36@gmail.com</a>
-                            </p>
-                        </div> <!-- end contact-block -->
-                    </div>
-                    <div class="column large-12 medium-6 tab-12">
-                        <div class="contact-block">
-                            <h5 class="contact-block__header">
-                                Phone
-                            </h5>
-                            <p class="contact-block__content">
-                                <a href="tel:+19899415846">+1(989)941 5846</a>
-                            </p>
-                        </div> <!-- end contact-block -->
-                    </div>
-
-                    <div class="column large-12">
-                        <a href="mailto:kadenthomp36@gmail.com" class="mailtoui btn btn--primary h-full-width">Let's Talk</a>
-                    </div>
-                </div> <!-- end contact-infos -->
-
-            </div>
-        </div> <!-- s-contact__content -->
-
-    </section> <!-- end s-contact -->
-
-    <!-- footer
-    ================================================== -->
-    <footer class="s-footer">
-        <div class="row">
-            <div class="column large-4 medium-6 w-1000-stack s-footer__social-block">
-                <ul class="s-footer__social">
-                    <li><a href="https://www.facebook.com/kaden.thompson.58"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.instagram.com/kadenmt36/?hl=en"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/kadenthompson/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ss-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
-             </a>
-        </div> <!-- end ss-go-top -->
-    </footer>
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
+    <div class="bio reveal">
+      <p>I build open-source cards for <a href="https://www.home-assistant.io/">Home Assistant</a>, self-hosted tools for my homelab, and websites for the people and places around me. By day I&rsquo;m a software engineer at <a href="https://www.rocketmortgage.com/">Rocket Mortgage</a>.</p>
+      <p>I started programming with LEGO robotics as a kid and never really stopped. These days most of my free time goes to home automation, CAD and 3D printing, and being outside on water or snow.</p>
+    </div>
+
+    <section class="reveal">
+      <h2>Open source</h2>
+      <ul>
+        <li>
+          <div class="item-line"><a href="https://github.com/KadenThomp36/chronicle-card">Chronicle Card</a><span class="year">2026</span></div>
+          <p class="desc">A universal timeline card for Home Assistant — events from any source in one interactive timeline. In the HACS default store.</p>
+        </li>
+        <li>
+          <div class="item-line"><a href="https://github.com/KadenThomp36/air-quality-card">Air Quality Card</a><span class="year">2026</span></div>
+          <p class="desc">Indoor air-quality monitoring with gradient graphs, WHO-based health thresholds, and CO / radon safety alerts.</p>
+        </li>
+        <li>
+          <div class="item-line"><a href="https://github.com/KadenThomp36/garage-card">Garage Card</a><span class="year">2026</span></div>
+          <p class="desc">A top-down visual garage: door state, car presence, and light control in one card.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Self-hosted</h2>
+      <ul>
+        <li>
+          <div class="item-line">Crate<span class="year">2026</span></div>
+          <p class="desc">A monospace-minimal inventory system for the physical world — web app, CLI, and an MCP server so an AI agent can file inventory by voice.</p>
+        </li>
+        <li>
+          <div class="item-line">Marquee<span class="year">2026</span></div>
+          <p class="desc">A household media tracker for TV, movies, and anime — a self-hosted TV&nbsp;Time replacement built with FastAPI and vanilla JS.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Web</h2>
+      <ul>
+        <li>
+          <div class="item-line"><a href="https://www.lincoln-twp.org">Lincoln Township</a><span class="year">2021&ndash;</span></div>
+          <p class="desc">Designed, built, and still maintain the municipal website for Lincoln Township, Michigan.</p>
+        </li>
+        <li>
+          <div class="item-line"><a href="https://kdenteellc.com">kdentee LLC</a><span class="year">2025&ndash;</span></div>
+          <p class="desc">My studio for freelance web work.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="elsewhere reveal">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><div class="item-line"><span class="year">github</span><a href="https://github.com/KadenThomp36">@KadenThomp36</a></div></li>
+        <li><div class="item-line"><span class="year">linkedin</span><a href="https://www.linkedin.com/in/kadenthompson/">kadenthompson</a></div></li>
+        <li><div class="item-line"><span class="year">blog</span><a href="https://kdentee.com">kdentee.com</a></div></li>
+        <li><div class="item-line"><span class="year">email</span><a href="mailto:kadenthomp36@gmail.com">kadenthomp36@gmail.com</a></div></li>
+      </ul>
+    </section>
+
+    <footer class="reveal">Waterford, MI &middot; updated July 2026</footer>
+  </main>
 </body>
-
 </html>
